@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Better Place Chunker">
+        <title>Better Place Chunker</title>
+        <script src="app.js" type="module"></script>
+        <style>
+            body {
+                background: #414040;
+                white-space: nowrap;
+            }
+            .previewChunk {
+                width: 128px;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div><label for="projectName">Project Name</label></div>
+        <div><input id="projectName" type="text"></div>
+        <br>
+        <div>Start Position (Top Left)</div>
+        <div>
+            <label for="startPosX">Start X</label> <input id="startPosX" type="number" value="0">
+            <label for="startPosY">Start Y</label> <input id="startPosY" type="number" value="0">
+        </div>
+        <br>
+        <div>Chunk Size</div>
+        <div>
+            <label for="chunkWidth">Chunk Width</label> <input id="chunkWidth" type="number" value="1024" max="1024">
+            <label for="chunkHeight">Chunk Height</label> <input id="chunkHeight" type="number" value="1024" max="1024">
+        </div>
+        <br>
+        <div><input type="file" id="imageInput" accept="image/*"></div>
+        <br>
+        <div><button id="startButton">Start</button></div>
+        <div><button id="dlAll">Download All</button></div>
+        <div id="output"></div>
+    </body>
+</html>
