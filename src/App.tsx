@@ -11,6 +11,7 @@ import type {TemplateFile} from "./features/bplace-file/types/bplace-file.ts";
 import {createBPlaceFile} from "./features/bplace-file/utils/createTemplateFile.ts";
 import TemplatePreview from "./features/core/components/TemplatePreview.tsx";
 import {downloadTemplateFile} from "./features/bplace-file/utils/downloadTemplateFile.ts";
+import {getRandomName} from "./features/random-name/utils/getRandomName.ts";
 
 const RootContainer = styled.div`
     background: ${({theme}) => theme.colors.background1};
@@ -55,6 +56,7 @@ export default function App() {
     const [theme, setTheme] = useState(localStorage.getItem("theme"));
     const [inputImage, setInputImage] = useState<string | null>();
     const [settings, setSettings] = useState<ChunkerSettingsData>(DefaultSettings);
+    const [previewSize, setPreviewSize] = useState<number>(5);
 
     const [outputWidth, setOutputWidth] = useState<number>(0);
     const [output, setOutput] = useState<TemplateFile[]>([]);
@@ -67,11 +69,19 @@ export default function App() {
         });
     };
 
+    const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPreviewSize(e.target.valueAsNumber)
+    }
+
     const onFileChoose = async (list: FileList) => {
         const file: File | null = list.item(0);
         console.log(file);
         if(!file) return;
         setInputImage(URL.createObjectURL(file));
+        setSettings({
+            ...settings,
+            projectName: getRandomName()
+        });
     }
 
     const handleChunk = () => {
@@ -124,9 +134,11 @@ export default function App() {
                 <Button size={2} onClick={handleChunk} disabled={inputImage == null}>Chunk!</Button>
                 {output.length != 0 && (<>
                     <Button disabled={false} size={1} onClick={handleDownloadAll}>Download All</Button>
+                    <label>Size</label>
+                    <input onChange={handleSizeChange} type="range" value={previewSize} min="1" max="20" />
                     <OutputContainer count={outputWidth}>
                         {output.map((item) => (
-                            <TemplatePreview key={item.template.name} file={item}></TemplatePreview>
+                            <TemplatePreview size={previewSize} key={item.template.name} file={item}></TemplatePreview>
                         ))}
                     </OutputContainer>
                 </>)}

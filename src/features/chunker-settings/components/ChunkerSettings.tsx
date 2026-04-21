@@ -121,11 +121,11 @@ function ChunkerSettings({ settings, onChange }: Props) {
                         <SettingsRow style={{textAlign:"center"}}>Chunk Size</SettingsRow>
                         <SettingsRow>
                             <PaddingDiv>
-                                <Label>X</Label>
+                                <Label>Width</Label>
                                 <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.width} onChange={(e) => handleSizeChange("width", e.target.valueAsNumber)}/>
                             </PaddingDiv>
                             <PaddingDiv>
-                                <Label>Y</Label>
+                                <Label>Height</Label>
                                 <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.height} onChange={(e) => handleSizeChange("height", e.target.valueAsNumber)}/>
                             </PaddingDiv>
                         </SettingsRow>
