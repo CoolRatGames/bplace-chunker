@@ -134,7 +134,7 @@ export default function App() {
                 <Button size={2} onClick={handleChunk} disabled={inputImage == null}>Chunk!</Button>
                 {output.length != 0 && (<>
                     <Button disabled={false} size={1} onClick={handleDownloadAll}>Download All</Button>
-                    <label>Size</label>
+                    <label>Preview Size</label>
                     <input onChange={handleSizeChange} type="range" value={previewSize} min="1" max="20" />
                     <OutputContainer count={outputWidth}>
                         {output.map((item) => (
