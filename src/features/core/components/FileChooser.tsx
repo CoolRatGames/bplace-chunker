@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import React, {useRef, useState} from "react";
+import React, {memo, useRef, useState} from "react";
 import FolderIcon from "../../icons/components/FolderIcon.tsx";
 
 const Container = styled.div`
@@ -75,12 +75,25 @@ const Subtitle = styled.div`
     font-size: 13px;
 `;
 
+const InputImagePreviewContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const InputImagePreview = styled.img`
+    height: 6em;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+`;
+
 type Props = {
     onFileSelected: (files: FileList) => void;
-    children: React.ReactNode;
+    selectedImage?: string | null;
 };
 
-export default function FileChooser({ onFileSelected, children }: Props) {
+function FileChooser({ onFileSelected, selectedImage }: Props) {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [isDragging, setIsDragging] = useState(false);
 
@@ -126,11 +139,15 @@ export default function FileChooser({ onFileSelected, children }: Props) {
 
                 <Content>
                     <Icon><FolderIcon/></Icon>
-                    {children}
+                    <InputImagePreviewContainer>
+                        {selectedImage && <InputImagePreview src={selectedImage}/>}
+                    </InputImagePreviewContainer>
                     <Title>Drag & drop Image here</Title>
                     <Subtitle>or click to browse</Subtitle>
                 </Content>
             </DropArea>
         </Container>
     );
-};
+}
+
+export default memo(FileChooser);

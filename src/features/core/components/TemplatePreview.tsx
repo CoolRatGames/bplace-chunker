@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import type {TemplateFile} from "../../bplace-file/types/bplace-file.ts";
 import styled from "styled-components";
 import {downloadTemplateFile} from "../../bplace-file/utils/downloadTemplateFile.ts";
@@ -39,4 +39,4 @@ function TemplatePreview({ file, size }: Props) {
     );
 }
 
-export default TemplatePreview;
+export default memo(TemplatePreview);

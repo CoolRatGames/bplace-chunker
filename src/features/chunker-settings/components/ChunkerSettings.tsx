@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import type {ChunkerSettingsData} from "../types/Types.ts";
 import {DefaultSettings} from "../data/Defaults.ts";
 import {BPLACE_CANVAS_SIZE, BPLACE_TEMPLATE_MAX} from "../../core/data/Constants.ts";
@@ -97,44 +97,41 @@ function ChunkerSettings({ settings, onChange }: Props) {
     }
 
     return (
-
-            <StyledSurface>
-                <ToggleSettingsButton onClick={toggleVisibility}>Settings</ToggleSettingsButton>
-                {visible && (
-                    <SettingsContainer>
-                        <hr style={{width:"100%"}}/>
-                        <SettingsRow style={{textAlign:"center"}}>Project Name</SettingsRow>
-                        <SettingsRow><input type="text" value={settings.projectName} onChange={handleProjectNameChange}/></SettingsRow>
-                        <hr style={{width:"100%", opacity: "0.4"}}/>
-                        <SettingsRow style={{textAlign:"center"}}>Start Position</SettingsRow>
-                        <SettingsRow>
-                            <PaddingDiv>
-                                <Label>X</Label>
-                                <input type="number" min={0} max={BPLACE_CANVAS_SIZE} value={settings.startPosition.x} onChange={(e) => handlePositionChange("x", e.target.valueAsNumber)}/>
-                            </PaddingDiv>
-                            <PaddingDiv>
-                                <Label>Y</Label>
-                                <input type="number" min={0} max={BPLACE_CANVAS_SIZE} value={settings.startPosition.y} onChange={(e) => handlePositionChange("y", e.target.valueAsNumber)}/>
-                            </PaddingDiv>
-                        </SettingsRow>
-                        <hr style={{width:"100%", opacity: "0.4"}}/>
-                        <SettingsRow style={{textAlign:"center"}}>Chunk Size</SettingsRow>
-                        <SettingsRow>
-                            <PaddingDiv>
-                                <Label>Width</Label>
-                                <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.width} onChange={(e) => handleSizeChange("width", e.target.valueAsNumber)}/>
-                            </PaddingDiv>
-                            <PaddingDiv>
-                                <Label>Height</Label>
-                                <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.height} onChange={(e) => handleSizeChange("height", e.target.valueAsNumber)}/>
-                            </PaddingDiv>
-                        </SettingsRow>
-                    </SettingsContainer>
-                )}
-            </StyledSurface>
-
-
+        <StyledSurface>
+            <ToggleSettingsButton onClick={toggleVisibility}>Settings</ToggleSettingsButton>
+            {visible && (
+                <SettingsContainer>
+                    <hr style={{width:"100%"}}/>
+                    <SettingsRow style={{textAlign:"center"}}>Project Name</SettingsRow>
+                    <SettingsRow><input type="text" value={settings.projectName} onChange={handleProjectNameChange}/></SettingsRow>
+                    <hr style={{width:"100%", opacity: "0.4"}}/>
+                    <SettingsRow style={{textAlign:"center"}}>Start Position</SettingsRow>
+                    <SettingsRow>
+                        <PaddingDiv>
+                            <Label>X</Label>
+                            <input type="number" min={0} max={BPLACE_CANVAS_SIZE} value={settings.startPosition.x} onChange={(e) => handlePositionChange("x", e.target.valueAsNumber)}/>
+                        </PaddingDiv>
+                        <PaddingDiv>
+                            <Label>Y</Label>
+                            <input type="number" min={0} max={BPLACE_CANVAS_SIZE} value={settings.startPosition.y} onChange={(e) => handlePositionChange("y", e.target.valueAsNumber)}/>
+                        </PaddingDiv>
+                    </SettingsRow>
+                    <hr style={{width:"100%", opacity: "0.4"}}/>
+                    <SettingsRow style={{textAlign:"center"}}>Chunk Size</SettingsRow>
+                    <SettingsRow>
+                        <PaddingDiv>
+                            <Label>Width</Label>
+                            <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.width} onChange={(e) => handleSizeChange("width", e.target.valueAsNumber)}/>
+                        </PaddingDiv>
+                        <PaddingDiv>
+                            <Label>Height</Label>
+                            <input type="number" min={0} max={BPLACE_TEMPLATE_MAX} value={settings.chunkSize.height} onChange={(e) => handleSizeChange("height", e.target.valueAsNumber)}/>
+                        </PaddingDiv>
+                    </SettingsRow>
+                </SettingsContainer>
+            )}
+        </StyledSurface>
     );
 }
 
-export default ChunkerSettings;
+export default memo(ChunkerSettings);

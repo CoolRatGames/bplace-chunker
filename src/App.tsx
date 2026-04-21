@@ -9,9 +9,8 @@ import {DefaultSettings} from "./features/chunker-settings/data/Defaults.ts";
 import Button from "./features/core/components/Button.tsx";
 import type {TemplateFile} from "./features/bplace-file/types/bplace-file.ts";
 import {createBPlaceFile} from "./features/bplace-file/utils/createTemplateFile.ts";
-import TemplatePreview from "./features/core/components/TemplatePreview.tsx";
-import {downloadTemplateFile} from "./features/bplace-file/utils/downloadTemplateFile.ts";
 import {getRandomName} from "./features/random-name/utils/getRandomName.ts";
+import OutputPanel from "./features/core/components/OutputPanel.tsx";
 
 const RootContainer = styled.div`
     background: ${({theme}) => theme.colors.background1};
@@ -25,38 +24,11 @@ const RootContainer = styled.div`
     align-items: center;
 `;
 
-const InputImagePreviewContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const InputImagePreview = styled.img`
-    height: 6em;
-    width: auto;
-    flex-shrink: 0;
-    display: block;
-`;
-
-const OutputContainer = styled.div<{count: number}>`
-    width: fit-content;
-    max-width: 80%;
-    display: grid;
-    grid-template-columns: repeat(${props => props.count}, 1fr);
-    overflow: scroll;
-    border-radius: 5px;
-    border: 4px solid ${({ theme }) => theme.colors.border1};
-    margin-bottom: 32px;
-    place-items: center;
-    padding: 4px;
-`;
-
 export default function App() {
     const preventDragDrop: (e: React.DragEvent<HTMLDivElement>) => void = (e) => { e.preventDefault(); };
     const [theme, setTheme] = useState(localStorage.getItem("theme"));
     const [inputImage, setInputImage] = useState<string | null>();
     const [settings, setSettings] = useState<ChunkerSettingsData>(DefaultSettings);
-    const [previewSize, setPreviewSize] = useState<number>(5);
 
     const [outputWidth, setOutputWidth] = useState<number>(0);
     const [output, setOutput] = useState<TemplateFile[]>([]);
@@ -69,19 +41,11 @@ export default function App() {
         });
     };
 
-    const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPreviewSize(e.target.valueAsNumber)
-    }
-
     const onFileChoose = async (list: FileList) => {
         const file: File | null = list.item(0);
-        console.log(file);
         if(!file) return;
         setInputImage(URL.createObjectURL(file));
-        setSettings({
-            ...settings,
-            projectName: getRandomName()
-        });
+        setSettings({ ...settings, projectName: getRandomName() });
     }
 
     const handleChunk = () => {
@@ -116,32 +80,15 @@ export default function App() {
         image.src = inputImage!;
     }
 
-    const handleDownloadAll = () => {
-        output.forEach(downloadTemplateFile)
-    }
-
     return (
         <ThemeProvider theme={theme == "light" ? THEME_LIGHT : THEME_DARK}>
             <RootContainer onDragOver={preventDragDrop} onDrop={preventDragDrop}>
                 <ThemeToggle onClick={toggleTheme} />
                 <h1>Better Place Chunker</h1>
-                <FileChooser onFileSelected={onFileChoose}>
-                <InputImagePreviewContainer>
-                    {inputImage && <InputImagePreview src={inputImage}/>}
-                </InputImagePreviewContainer>
-                </FileChooser>
+                <FileChooser selectedImage={inputImage} onFileSelected={onFileChoose}/>
                 <ChunkerSettings settings={settings} onChange={setSettings} />
                 <Button size={2} onClick={handleChunk} disabled={inputImage == null}>Chunk!</Button>
-                {output.length != 0 && (<>
-                    <Button disabled={false} size={1} onClick={handleDownloadAll}>Download All</Button>
-                    <label>Preview Size</label>
-                    <input onChange={handleSizeChange} type="range" value={previewSize} min="1" max="20" />
-                    <OutputContainer count={outputWidth}>
-                        {output.map((item) => (
-                            <TemplatePreview size={previewSize} key={item.template.name} file={item}></TemplatePreview>
-                        ))}
-                    </OutputContainer>
-                </>)}
+                <OutputPanel output={output} outputWidth={outputWidth} />
             </RootContainer>
         </ThemeProvider>
     )
