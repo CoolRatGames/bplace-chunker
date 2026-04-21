@@ -1,63 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Better Place Chunker">
-        <title>Better Place Chunker</title>
-        <script src="app.js" type="module"></script>
-        <style>
-            body {
-                background: #414040;
-                white-space: nowrap;
-                color: lightgray;
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Better Place Chunker">
+		<title>Better Place Chunker</title>
+		<style>
+			body {
+				margin: 0;
+				font-family: sans-serif;
+
+			}
+            input[type="number"] {
+				width: 7ch;
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
             }
-            .previewChunk {
-                width: 128px;
-                padding: 8px;
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
             }
-        </style>
-    </head>
-    <body>
-        <div><label for="projectName">Project Name</label></div>
-        <div><input id="projectName" type="text"></div>
-        <br>
-        <div>Start Position (Top Left)</div>
-        <div>
-            <label for="startPosX">Start X</label> <input id="startPosX" type="number" value="0">
-            <label for="startPosY">Start Y</label> <input id="startPosY" type="number" value="0">
-        </div>
-        <br>
-        <div>Chunk Size</div>
-        <div>
-            <label for="chunkWidth">Chunk Width</label> <input id="chunkWidth" type="number" value="1024" max="1024">
-            <label for="chunkHeight">Chunk Height</label> <input id="chunkHeight" type="number" value="1024" max="1024">
-        </div>
-        <br>
-        <div><input type="file" id="imageInput" accept="image/*"></div>
-        <br>
-        <details>
-            <summary>What is this?</summary>
-            <p>Better Place supports Templates up to 1024 by 1024 Pixels.</p>
-            <p>If your template is bigger it will be scaled down to fit this resolution.</p>
-            <p>This is usually not a problem, but for bigger pixel art projects this can mess the template up.</p>
-            <p>This Tool allows you to supply a large image and split it into seperate chunks, each being within the 1024x1024 template size limit.</p>
-            <hr>
-            <p>Parameters Explanation:</p>
-            <p>Project Name: What your output files will be named.</p>
-            <p>Start Position: The absolute top left position all your chunks will reference in the template files.</p>
-            <p>Chunk Size: The size of each template.</p>
-            <hr>
-            <p>How to use:</p>
-            <p>1. Select your image</p>
-            <p>2. Configure Parameters</p>
-            <p>3. Click the "Start" Button</p>
-            <p>4. Download individual templates by clicking on them or use the "Download all" Button</p>
-        </details>
-        <br>
-        <div><button id="startButton">Start</button></div>
-        <div><button id="dlAll">Download All</button></div>
-        <div id="output"></div>
-    </body>
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
 </html>
