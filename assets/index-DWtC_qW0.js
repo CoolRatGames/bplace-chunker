@@ -88,7 +88,7 @@ Error generating stack: `+e.message+`
     font-weight: 600;
 `,nr=M.div`
     font-size: 13px;
-`;function rr({onFileSelected:e,children:t}){let n=(0,_.useRef)(null),[r,i]=(0,_.useState)(!1),a=t=>{e(t)};return(0,N.jsx)(Xn,{children:(0,N.jsxs)(Zn,{$isDragging:r,onClick:()=>{n.current?.click()},onDrop:e=>{e.preventDefault(),i(!1),e.dataTransfer.files&&e.dataTransfer.files.length>0&&a(e.dataTransfer.files)},onDragOver:e=>{e.preventDefault(),i(!0)},onDragLeave:()=>{i(!1)},children:[(0,N.jsx)(Qn,{ref:n,type:`file`,accept:`image/*`,multiple:!1,onChange:e=>{e.target.files&&a(e.target.files)}}),(0,N.jsxs)($n,{children:[(0,N.jsx)(er,{children:(0,N.jsx)(Yn,{})}),t,(0,N.jsx)(tr,{children:`Drag & drop Image here`}),(0,N.jsx)(nr,{children:`or click to browse`})]})]})})}var ir={projectName:`chunk`,startPosition:{x:0,y:0},chunkSize:{width:512,height:512}},ar=M.button`
+`;function rr({onFileSelected:e,children:t}){let n=(0,_.useRef)(null),[r,i]=(0,_.useState)(!1),a=t=>{e(t)};return(0,N.jsx)(Xn,{children:(0,N.jsxs)(Zn,{$isDragging:r,onClick:()=>{n.current?.click()},onDrop:e=>{e.preventDefault(),i(!1),e.dataTransfer.files&&e.dataTransfer.files.length>0&&a(e.dataTransfer.files)},onDragOver:e=>{e.preventDefault(),i(!0)},onDragLeave:()=>{i(!1)},children:[(0,N.jsx)(Qn,{ref:n,type:`file`,accept:`image/*`,multiple:!1,onChange:e=>{e.target.files&&a(e.target.files)}}),(0,N.jsxs)($n,{children:[(0,N.jsx)(er,{children:(0,N.jsx)(Yn,{})}),t,(0,N.jsx)(tr,{children:`Drag & drop Image here`}),(0,N.jsx)(nr,{children:`or click to browse`})]})]})})}var ir=[`silly`,`funny`,`happy`,`cheerful`,`goofy`,`weird`,`clever`,`friendly`,`kind`,`playful`,`curious`,`brave`,`lazy`,`noisy`,`quiet`,`bright`,`strange`,`goofy`,`joyful`,`energetic`,`squeaky`,`restful`],ar=[`rodent`,`rat`,`mouse`,`squeaker`,`stinker`,`vermin`,`cheese`,`computer`,`painter`,`star`];function or(e,t){return Math.random()*(t-e)+e}function sr(e=`-`){return`${ir[Math.floor(or(0,ir.length-1))]}${e}${ar[Math.floor(or(0,ar.length-1))]}`}var cr={projectName:sr(),startPosition:{x:0,y:0},chunkSize:{width:512,height:512}},lr=M.button`
     width: calc(100% + 64px);
     height: calc(100% + 16px);
     background: none;
@@ -96,7 +96,7 @@ Error generating stack: `+e.message+`
     color: ${({theme:e})=>e.colors.text1};
     cursor: pointer;
     text-align: center;
-`,or=M.div`
+`,ur=M.div`
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -115,7 +115,7 @@ Error generating stack: `+e.message+`
 
     transition: all 0.25s ease;
 
-    &:has(${ar}:active) {
+    &:has(${lr}:active) {
         transform: scale(0.98);
 
     }
@@ -128,19 +128,19 @@ Error generating stack: `+e.message+`
     }
     
     user-select: none;
-`,sr=M.div`
+`,dr=M.div`
     display: flex;
     flex-direction: column;
-`,cr=M.div`
+`,fr=M.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 4px;
-`,lr=M.div`
+`,pr=M.div`
     padding: 4px;
-`,ur=M.label`
+`,mr=M.label`
     padding: 4px;
-`;function dr({settings:e,onChange:t}){let[n,r]=(0,_.useState)(!0),i=()=>{r(!n)},a=n=>{t({...e,projectName:n.target.value})},o=(n,r)=>{let i={...e};i.startPosition[n]=r,t(i)},s=(n,r)=>{let i={...e};i.chunkSize[n]=r,t(i)};return(0,N.jsxs)(or,{children:[(0,N.jsx)(ar,{onClick:i,children:`Settings`}),n&&(0,N.jsxs)(sr,{children:[(0,N.jsx)(`hr`,{style:{width:`100%`}}),(0,N.jsx)(cr,{style:{textAlign:`center`},children:`Project Name`}),(0,N.jsx)(cr,{children:(0,N.jsx)(`input`,{type:`text`,value:e.projectName,onChange:a})}),(0,N.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,N.jsx)(cr,{style:{textAlign:`center`},children:`Start Position`}),(0,N.jsxs)(cr,{children:[(0,N.jsxs)(lr,{children:[(0,N.jsx)(ur,{children:`X`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.x,onChange:e=>o(`x`,e.target.valueAsNumber)})]}),(0,N.jsxs)(lr,{children:[(0,N.jsx)(ur,{children:`Y`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.y,onChange:e=>o(`y`,e.target.valueAsNumber)})]})]}),(0,N.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,N.jsx)(cr,{style:{textAlign:`center`},children:`Chunk Size`}),(0,N.jsxs)(cr,{children:[(0,N.jsxs)(lr,{children:[(0,N.jsx)(ur,{children:`X`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.width,onChange:e=>s(`width`,e.target.valueAsNumber)})]}),(0,N.jsxs)(lr,{children:[(0,N.jsx)(ur,{children:`Y`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.height,onChange:e=>s(`height`,e.target.valueAsNumber)})]})]})]})]})}var fr=M.button`
+`;function hr({settings:e,onChange:t}){let[n,r]=(0,_.useState)(!0),i=()=>{r(!n)},a=n=>{t({...e,projectName:n.target.value})},o=(n,r)=>{let i={...e};i.startPosition[n]=r,t(i)},s=(n,r)=>{let i={...e};i.chunkSize[n]=r,t(i)};return(0,N.jsxs)(ur,{children:[(0,N.jsx)(lr,{onClick:i,children:`Settings`}),n&&(0,N.jsxs)(dr,{children:[(0,N.jsx)(`hr`,{style:{width:`100%`}}),(0,N.jsx)(fr,{style:{textAlign:`center`},children:`Project Name`}),(0,N.jsx)(fr,{children:(0,N.jsx)(`input`,{type:`text`,value:e.projectName,onChange:a})}),(0,N.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,N.jsx)(fr,{style:{textAlign:`center`},children:`Start Position`}),(0,N.jsxs)(fr,{children:[(0,N.jsxs)(pr,{children:[(0,N.jsx)(mr,{children:`X`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.x,onChange:e=>o(`x`,e.target.valueAsNumber)})]}),(0,N.jsxs)(pr,{children:[(0,N.jsx)(mr,{children:`Y`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.y,onChange:e=>o(`y`,e.target.valueAsNumber)})]})]}),(0,N.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,N.jsx)(fr,{style:{textAlign:`center`},children:`Chunk Size`}),(0,N.jsxs)(fr,{children:[(0,N.jsxs)(pr,{children:[(0,N.jsx)(mr,{children:`Width`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.width,onChange:e=>s(`width`,e.target.valueAsNumber)})]}),(0,N.jsxs)(pr,{children:[(0,N.jsx)(mr,{children:`Height`}),(0,N.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.height,onChange:e=>s(`height`,e.target.valueAsNumber)})]})]})]})]})}var gr=M.button`
     margin: 16px;
     display: flex;
     flex-direction: column;
@@ -178,7 +178,7 @@ Error generating stack: `+e.message+`
         cursor: default !important;
         box-shadow: none;
     }
-`;function pr({onClick:e,size:t,disabled:n,children:r}){return(0,N.jsx)(fr,{size:t,onClick:e,disabled:n,children:r})}function mr(e,t,n,r,i){return{version:1,exportedAt:new Date().toUTCString(),template:{name:`${e}-${t.x}-${t.y}`,opacity:1,position:{x:r.x+t.x*n.width,y:r.y+t.y*n.height},scale:1,rotation:0,visible:!0,width:n.width,height:n.height,displayMode:`image`,renderAbovePixels:!0,excludeSpecialColors:!1,canvasType:`world`,imageInIndexedDB:!0,imageData:i,_needsImageLoad:!0,_version:5}}}function hr(e,t){let n=new Blob([e],{type:`application/json`}),r=URL.createObjectURL(n),i=document.createElement(`a`);i.href=r,i.download=t,i.click(),URL.revokeObjectURL(r)}function gr(e){hr(JSON.stringify(e),`${e.template.name}.bplace`)}var _r=M.div`
+`;function _r({onClick:e,size:t,disabled:n,children:r}){return(0,N.jsx)(gr,{size:t,onClick:e,disabled:n,children:r})}function vr(e,t,n,r,i){return{version:1,exportedAt:new Date().toUTCString(),template:{name:`${e}-${t.x}-${t.y}`,opacity:1,position:{x:r.x+t.x*n.width,y:r.y+t.y*n.height},scale:1,rotation:0,visible:!0,width:n.width,height:n.height,displayMode:`image`,renderAbovePixels:!0,excludeSpecialColors:!1,canvasType:`world`,imageInIndexedDB:!0,imageData:i,_needsImageLoad:!0,_version:5}}}function yr(e,t){let n=new Blob([e],{type:`application/json`}),r=URL.createObjectURL(n),i=document.createElement(`a`);i.href=r,i.download=t,i.click(),URL.revokeObjectURL(r)}function br(e){yr(JSON.stringify(e),`${e.template.name}.bplace`)}var xr=M.div`
     transition: all 0.5s ease;
     &:hover {
         cursor: pointer;
@@ -188,12 +188,12 @@ Error generating stack: `+e.message+`
     width: fit-content;
     height: fit-content;
     margin: 4px;
-`,vr=M.img`
+`,Sr=M.img`
     image-rendering: pixelated;
     display: block;
-    width: 10em;
+    width: ${e=>e.size}em;
     height: auto;
-`;function yr({file:e}){return(0,N.jsx)(_r,{onClick:()=>{gr(e)},children:(0,N.jsx)(vr,{src:e.template.imageData})})}var br=M.div`
+`;function Cr({file:e,size:t}){return(0,N.jsx)(xr,{onClick:()=>{br(e)},children:(0,N.jsx)(Sr,{size:t,src:e.template.imageData})})}var wr=M.div`
     background: ${({theme:e})=>e.colors.background1};
     color: ${({theme:e})=>e.colors.text1};
     
@@ -203,16 +203,16 @@ Error generating stack: `+e.message+`
     display: flex;
     flex-direction: column;
     align-items: center;
-`,xr=M.div`
+`,Tr=M.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`,Sr=M.img`
+`,Er=M.img`
     height: 6em;
     width: auto;
     flex-shrink: 0;
     display: block;
-`,Cr=M.div`
+`,Dr=M.div`
     width: fit-content;
     max-width: 80%;
     display: grid;
@@ -223,5 +223,5 @@ Error generating stack: `+e.message+`
     margin-bottom: 32px;
     place-items: center;
     padding: 4px;
-`;function wr(){let e=e=>{e.preventDefault()},[t,n]=(0,_.useState)(localStorage.getItem(`theme`)),[r,i]=(0,_.useState)(),[a,o]=(0,_.useState)(ir),[s,c]=(0,_.useState)(0),[l,u]=(0,_.useState)([]);return(0,N.jsx)(Pn,{theme:t==`light`?Hn:Un,children:(0,N.jsxs)(br,{onDragOver:e,onDrop:e,children:[(0,N.jsx)(Jn,{onClick:()=>{n(e=>{let t=e===`light`?`dark`:`light`;return localStorage.setItem(`theme`,t),t})}}),(0,N.jsx)(`h1`,{children:`Better Place Chunker`}),(0,N.jsx)(rr,{onFileSelected:async e=>{let t=e.item(0);console.log(t),t&&i(URL.createObjectURL(t))},children:(0,N.jsx)(xr,{children:r&&(0,N.jsx)(Sr,{src:r})})}),(0,N.jsx)(dr,{settings:a,onChange:o}),(0,N.jsx)(pr,{size:2,onClick:()=>{let e=new Image;e.onload=()=>{let t=a.chunkSize.width,n=a.chunkSize.height,r=document.createElement(`canvas`);r.width=t,r.height=n;let i=r.getContext(`2d`);if(!i)return;let o=e.width/t,s=e.height/n;c(Math.ceil(o));let l=[];for(let c=0;c<s;c++)for(let s=0;s<o;s++){i.clearRect(0,0,r.width,r.height),i.drawImage(e,s*t,c*n,t,n,0,0,t,n);let o=mr(a.projectName,{x:s,y:c},{width:t,height:n},a.startPosition,r.toDataURL());l.push(o)}u(l)},e.src=r},disabled:r==null,children:`Chunk!`}),l.length!=0&&(0,N.jsxs)(N.Fragment,{children:[(0,N.jsx)(pr,{disabled:!1,size:1,onClick:()=>{l.forEach(gr)},children:`Download All`}),(0,N.jsx)(Cr,{count:s,children:l.map(e=>(0,N.jsx)(yr,{file:e},e.template.name))})]})]})})}var Tr=document.getElementById(`root`);v.createRoot(Tr).render((0,N.jsx)(_.StrictMode,{children:(0,N.jsx)(wr,{})}));
-//# sourceMappingURL=index-BHvW6HRV.js.map
+`;function Or(){let e=e=>{e.preventDefault()},[t,n]=(0,_.useState)(localStorage.getItem(`theme`)),[r,i]=(0,_.useState)(),[a,o]=(0,_.useState)(cr),[s,c]=(0,_.useState)(5),[l,u]=(0,_.useState)(0),[d,f]=(0,_.useState)([]);return(0,N.jsx)(Pn,{theme:t==`light`?Hn:Un,children:(0,N.jsxs)(wr,{onDragOver:e,onDrop:e,children:[(0,N.jsx)(Jn,{onClick:()=>{n(e=>{let t=e===`light`?`dark`:`light`;return localStorage.setItem(`theme`,t),t})}}),(0,N.jsx)(`h1`,{children:`Better Place Chunker`}),(0,N.jsx)(rr,{onFileSelected:async e=>{let t=e.item(0);console.log(t),t&&(i(URL.createObjectURL(t)),o({...a,projectName:sr()}))},children:(0,N.jsx)(Tr,{children:r&&(0,N.jsx)(Er,{src:r})})}),(0,N.jsx)(hr,{settings:a,onChange:o}),(0,N.jsx)(_r,{size:2,onClick:()=>{let e=new Image;e.onload=()=>{let t=a.chunkSize.width,n=a.chunkSize.height,r=document.createElement(`canvas`);r.width=t,r.height=n;let i=r.getContext(`2d`);if(!i)return;let o=e.width/t,s=e.height/n;u(Math.ceil(o));let c=[];for(let l=0;l<s;l++)for(let s=0;s<o;s++){i.clearRect(0,0,r.width,r.height),i.drawImage(e,s*t,l*n,t,n,0,0,t,n);let o=vr(a.projectName,{x:s,y:l},{width:t,height:n},a.startPosition,r.toDataURL());c.push(o)}f(c)},e.src=r},disabled:r==null,children:`Chunk!`}),d.length!=0&&(0,N.jsxs)(N.Fragment,{children:[(0,N.jsx)(_r,{disabled:!1,size:1,onClick:()=>{d.forEach(br)},children:`Download All`}),(0,N.jsx)(`label`,{children:`Size`}),(0,N.jsx)(`input`,{onChange:e=>{c(e.target.valueAsNumber)},type:`range`,value:s,min:`1`,max:`20`}),(0,N.jsx)(Dr,{count:l,children:d.map(e=>(0,N.jsx)(Cr,{size:s,file:e},e.template.name))})]})]})})}var kr=document.getElementById(`root`);v.createRoot(kr).render((0,N.jsx)(_.StrictMode,{children:(0,N.jsx)(Or,{})}));
+//# sourceMappingURL=index-DWtC_qW0.js.map
