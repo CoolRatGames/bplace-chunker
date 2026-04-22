@@ -150,12 +150,12 @@ Error generating stack: `+e.message+`
 `,vr=j.label`
     padding: 4px;
 `;function yr({settings:e,onChange:t}){let[n,r]=(0,_.useState)(!0),i=()=>{r(!n)},a=n=>{t({...e,projectName:n.target.value})},o=(n,r)=>{let i={...e};i.startPosition[n]=r,t(i)},s=(n,r)=>{let i={...e};i.chunkSize[n]=r,t(i)};return(0,M.jsxs)(mr,{children:[(0,M.jsx)(pr,{onClick:i,children:`Settings`}),n&&(0,M.jsxs)(hr,{children:[(0,M.jsx)(`hr`,{style:{width:`100%`}}),(0,M.jsx)(gr,{style:{textAlign:`center`},children:`Project Name`}),(0,M.jsx)(gr,{children:(0,M.jsx)(`input`,{type:`text`,value:e.projectName,onChange:a})}),(0,M.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,M.jsx)(gr,{style:{textAlign:`center`},children:`Start Position`}),(0,M.jsxs)(gr,{children:[(0,M.jsxs)(_r,{children:[(0,M.jsx)(vr,{children:`X`}),(0,M.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.x,onChange:e=>o(`x`,e.target.valueAsNumber)})]}),(0,M.jsxs)(_r,{children:[(0,M.jsx)(vr,{children:`Y`}),(0,M.jsx)(`input`,{type:`number`,min:0,max:1335833,value:e.startPosition.y,onChange:e=>o(`y`,e.target.valueAsNumber)})]})]}),(0,M.jsx)(`hr`,{style:{width:`100%`,opacity:`0.4`}}),(0,M.jsx)(gr,{style:{textAlign:`center`},children:`Chunk Size`}),(0,M.jsxs)(gr,{children:[(0,M.jsxs)(_r,{children:[(0,M.jsx)(vr,{children:`Width`}),(0,M.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.width,onChange:e=>s(`width`,e.target.valueAsNumber)})]}),(0,M.jsxs)(_r,{children:[(0,M.jsx)(vr,{children:`Height`}),(0,M.jsx)(`input`,{type:`number`,min:0,max:1024,value:e.chunkSize.height,onChange:e=>s(`height`,e.target.valueAsNumber)})]})]})]})]})}var br=(0,_.memo)(yr),xr=j.button`
-    margin: 16px;
+    margin: 8px;
     display: flex;
     flex-direction: column;
     text-align: center;
     border-radius: 16px;
-    padding: 12px 32px 12px 32px;
+    padding: 8px 24px 8px 24px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -187,7 +187,7 @@ Error generating stack: `+e.message+`
         cursor: default !important;
         box-shadow: none;
     }
-`;function Sr({onClick:e,size:t,disabled:n,children:r}){return(0,M.jsx)(xr,{size:t,onClick:e,disabled:n,children:r})}function Cr(e,t,n,r,i){return{version:1,exportedAt:new Date().toUTCString(),template:{name:`${e}-${t.x}-${t.y}`,opacity:1,position:{x:r.x+t.x*n.width,y:r.y+t.y*n.height},scale:1,rotation:0,visible:!0,width:n.width,height:n.height,displayMode:`image`,renderAbovePixels:!0,excludeSpecialColors:!1,canvasType:`world`,imageInIndexedDB:!0,imageData:i,_needsImageLoad:!0,_version:5}}}function wr(e,t){let n=new Blob([e],{type:`application/json`}),r=URL.createObjectURL(n),i=document.createElement(`a`);i.href=r,i.download=t,i.click(),URL.revokeObjectURL(r)}function Tr(e){wr(JSON.stringify(e),`${e.template.name}.bplace`)}var Er=j.div`
+`;function Sr({onClick:e,size:t,disabled:n=!1,style:r={},children:i}){return(0,M.jsx)(xr,{style:r,size:t,onClick:e,disabled:n,children:i})}function Cr(e,t,n,r,i){return{version:1,exportedAt:new Date().toUTCString(),template:{name:`${e}-${t.x}-${t.y}`,opacity:1,position:{x:r.x+t.x*n.width,y:r.y+t.y*n.height},scale:1,rotation:0,visible:!0,width:n.width,height:n.height,displayMode:`image`,renderAbovePixels:!0,excludeSpecialColors:!1,canvasType:`world`,imageInIndexedDB:!0,imageData:i,_needsImageLoad:!0,_version:5}}}function wr(e,t){let n=new Blob([e],{type:`application/json`}),r=URL.createObjectURL(n),i=document.createElement(`a`);i.href=r,i.download=t,i.click(),URL.revokeObjectURL(r)}function Tr(e){wr(JSON.stringify(e),`${e.template.name}.bplace`)}var Er=j.div`
     transition: all 0.5s ease;
     &:hover {
         cursor: pointer;
@@ -218,10 +218,21 @@ Error generating stack: `+e.message+`
     color: ${({theme:e})=>e.colors.text1};
     
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-`;function Pr(){let e=e=>{e.preventDefault()},[t,n]=(0,_.useState)(localStorage.getItem(`theme`)),[r,i]=(0,_.useState)(),[a,o]=(0,_.useState)(fr),[s,c]=(0,_.useState)(0),[l,u]=(0,_.useState)([]);return(0,M.jsx)(Fn,{theme:t==`light`?Un:Wn,children:(0,M.jsxs)(Nr,{onDragOver:e,onDrop:e,children:[(0,M.jsx)(Yn,{onClick:()=>{n(e=>{let t=e===`light`?`dark`:`light`;return localStorage.setItem(`theme`,t),t})}}),(0,M.jsx)(`h1`,{children:`Better Place Chunker`}),(0,M.jsx)(sr,{selectedImage:r,onFileSelected:async e=>{let t=e.item(0);t&&(i(URL.createObjectURL(t)),o({...a,projectName:dr()}))}}),(0,M.jsx)(br,{settings:a,onChange:o}),(0,M.jsx)(Sr,{size:2,onClick:()=>{let e=new Image;e.onload=()=>{let t=a.chunkSize.width,n=a.chunkSize.height,r=document.createElement(`canvas`);r.width=t,r.height=n;let i=r.getContext(`2d`);if(!i)return;let o=e.width/t,s=e.height/n;c(Math.ceil(o));let l=[];for(let c=0;c<s;c++)for(let s=0;s<o;s++){i.clearRect(0,0,r.width,r.height),i.drawImage(e,s*t,c*n,t,n,0,0,t,n);let o=Cr(a.projectName,{x:s,y:c},{width:t,height:n},a.startPosition,r.toDataURL());l.push(o)}u(l)},e.src=r},disabled:r==null,children:`Chunk!`}),(0,M.jsx)(Mr,{output:l,outputWidth:s})]})})}var Fr=document.getElementById(`root`);v.createRoot(Fr).render((0,M.jsx)(_.StrictMode,{children:(0,M.jsx)(Pr,{})}));
-//# sourceMappingURL=index-BBNcEMBZ.js.map
+`,Pr=j.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 16px;
+`,Fr=j.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;function Ir(){let e=e=>{e.preventDefault()},[t,n]=(0,_.useState)(localStorage.getItem(`theme`)),[r,i]=(0,_.useState)(),[a,o]=(0,_.useState)(fr),[s,c]=(0,_.useState)(0),[l,u]=(0,_.useState)([]);return(0,M.jsx)(Fn,{theme:t==`light`?Un:Wn,children:(0,M.jsxs)(Nr,{onDragOver:e,onDrop:e,children:[(0,M.jsx)(Yn,{onClick:()=>{n(e=>{let t=e===`light`?`dark`:`light`;return localStorage.setItem(`theme`,t),t})}}),(0,M.jsx)(`h1`,{children:`Better Place Chunker`}),(0,M.jsx)(sr,{selectedImage:r,onFileSelected:async e=>{let t=e.item(0);t&&(i(URL.createObjectURL(t)),o({...a,projectName:dr()}))}}),(0,M.jsx)(br,{settings:a,onChange:o}),(0,M.jsx)(Sr,{size:2,onClick:()=>{let e=new Image;e.onload=()=>{let t=a.chunkSize.width,n=a.chunkSize.height,r=document.createElement(`canvas`);r.width=t,r.height=n;let i=r.getContext(`2d`);if(!i)return;let o=e.width/t,s=e.height/n;c(Math.ceil(o));let l=[];for(let c=0;c<s;c++)for(let s=0;s<o;s++){i.clearRect(0,0,r.width,r.height),i.drawImage(e,s*t,c*n,t,n,0,0,t,n);let o=Cr(a.projectName,{x:s,y:c},{width:t,height:n},a.startPosition,r.toDataURL());l.push(o)}u(l)},e.src=r},disabled:r==null,children:`Chunk!`}),(0,M.jsx)(Mr,{output:l,outputWidth:s}),(0,M.jsxs)(Pr,{children:[(0,M.jsx)(Fr,{children:`Made with 🐀 by Sven Wollinger`}),(0,M.jsxs)(Fr,{children:[(0,M.jsx)(Sr,{size:1,onClick:()=>{window.open(`https://wollinger.io`,`_blank`)},children:(0,M.jsx)(`span`,{style:{display:`flex`,alignItems:`center`},children:`Wollinger.io`})}),(0,M.jsx)(Sr,{size:1,onClick:()=>{window.open(`https://github.com/CoolRatGames/bplace-chunker`,`_blank`)},children:(0,M.jsx)(`span`,{style:{display:`flex`,alignItems:`center`},children:`View on Github`})})]})]})]})})}var Lr=document.getElementById(`root`);v.createRoot(Lr).render((0,M.jsx)(_.StrictMode,{children:(0,M.jsx)(Ir,{})}));
+//# sourceMappingURL=index-BiZKZEWE.js.map
