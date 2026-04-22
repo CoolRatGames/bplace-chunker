@@ -17,12 +17,28 @@ const RootContainer = styled.div`
     color: ${({ theme }) => theme.colors.text1};
     
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
+
+const Footer = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 16px;
+`;
+
+const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
 
 export default function App() {
     const preventDragDrop: (e: React.DragEvent<HTMLDivElement>) => void = (e) => { e.preventDefault(); };
@@ -40,6 +56,9 @@ export default function App() {
             return newTheme;
         });
     };
+
+    const openWebsite = () => { window.open("https://wollinger.io", "_blank"); };
+    const openGithub = () => { window.open("https://github.com/CoolRatGames/bplace-chunker", "_blank"); };
 
     const onFileChoose = async (list: FileList) => {
         const file: File | null = list.item(0);
@@ -89,6 +108,14 @@ export default function App() {
                 <ChunkerSettings settings={settings} onChange={setSettings} />
                 <Button size={2} onClick={handleChunk} disabled={inputImage == null}>Chunk!</Button>
                 <OutputPanel output={output} outputWidth={outputWidth} />
+
+                <Footer>
+                    <Row>Made with 🐀 by Sven Wollinger</Row>
+                    <Row>
+                        <Button size={1} onClick={openWebsite}><span style={{display:"flex", alignItems: "center"}}>Wollinger.io</span></Button>
+                        <Button size={1} onClick={openGithub}><span style={{display:"flex", alignItems: "center"}}>View on Github</span></Button>
+                    </Row>
+                </Footer>
             </RootContainer>
         </ThemeProvider>
     )

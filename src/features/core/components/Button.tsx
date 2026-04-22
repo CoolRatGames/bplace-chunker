@@ -1,13 +1,13 @@
-import type {ReactNode} from "react";
+import type {CSSProperties, ReactNode} from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button<{size: number}>`
-    margin: 16px;
+    margin: 8px;
     display: flex;
     flex-direction: column;
     text-align: center;
     border-radius: 16px;
-    padding: 12px 32px 12px 32px;
+    padding: 8px 24px 8px 24px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -44,12 +44,13 @@ const StyledButton = styled.button<{size: number}>`
 type Props = {
     onClick: () => void;
     size: number;
-    disabled: boolean;
+    disabled?: boolean;
+    style?: CSSProperties;
     children: ReactNode;
 }
 
-function Button({ onClick, size, disabled, children }: Props) {
-    return <StyledButton size={size} onClick={onClick} disabled={disabled}>{children}</StyledButton>;
+function Button({ onClick, size, disabled = false, style = {}, children }: Props) {
+    return <StyledButton style={style} size={size} onClick={onClick} disabled={disabled}>{children}</StyledButton>;
 }
 
 export default Button;
